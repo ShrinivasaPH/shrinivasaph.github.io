@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#333" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#333">
     <title>Srinivasa PH | Singer | Composer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
@@ -13,8 +13,6 @@
             padding: 0;
             background-color: #000;
             color: #fff;
-            min-height: 100vh;
-            font-size: 1rem;
         }
         header {
             background: linear-gradient(to right, #333, #555);
@@ -131,7 +129,14 @@
             border-radius: 8px;
             cursor: pointer;
         }
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .video-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav a {
+                font-size: 1rem;
+            }
             .portfolio h2, .video h3 {
                 font-size: 1rem;
             }
@@ -139,7 +144,6 @@
     </style>
 </head>
 <body>
-
 <header>
     <h2>Srinivasa PH</h2>
     <p>Singer | Composer</p>
@@ -163,12 +167,30 @@
     <section class="portfolio">
         <h2><i class="fab fa-instagram"></i> Instagram Links</h2>
         <div class="video-container">
-            <div class="video"><h3>AMI JHE TOMAR</h3>
-                <div class="responsive-iframe">
-                    <iframe src="https://www.instagram.com/p/Cfy2DngD9yi/embed" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
-                </div>
+            <div class="video">
+                <h3>AMI JHE TOMAR</h3>
+                <div class="responsive-iframe"><iframe src="https://www.instagram.com/p/Cfy2DngD9yi/embed"></iframe></div>
             </div>
-            <!-- Repeat for each video -->
+            <div class="video">
+                <h3>Jingle Bells with a Twist</h3>
+                <div class="responsive-iframe"><iframe src="https://www.instagram.com/p/C1Rw2kNqSO3/embed"></iframe></div>
+            </div>
+            <div class="video">
+                <h3>RAAG BHOOPALI</h3>
+                <div class="responsive-iframe"><iframe src="https://www.instagram.com/p/C6y9FV4MBye/embed"></iframe></div>
+            </div>
+            <div class="video">
+                <h3>KRISHNA NI BEGANE</h3>
+                <div class="responsive-iframe"><iframe src="https://www.instagram.com/p/C0redEqShvc/embed"></iframe></div>
+            </div>
+            <div class="video">
+                <h3>SHARANU SAKALODDHARA</h3>
+                <div class="responsive-iframe"><iframe src="https://www.instagram.com/p/C2cpq2kK23R/embed"></iframe></div>
+            </div>
+            <div class="video">
+                <h3>CHANDRACHOODA</h3>
+                <div class="responsive-iframe"><iframe src="https://www.instagram.com/p/Co0OVp3DM5z/embed"></iframe></div>
+            </div>
         </div>
 
         <h2 style="color: black;"><i class="fab fa-youtube"></i> My Works on YouTube</h2>
@@ -176,13 +198,13 @@
             <iframe src="https://www.youtube.com/embed/Vk8IYf8oL48" title="Alaap | Raag Yaman |" frameborder="0" allowfullscreen></iframe>
         </div><br>
         <div class="responsive-iframe">
-            <iframe src="https://www.youtube.com/embed/_ONYF74hnGk" title="Sri Raghavendra Swamy Shloka | SriniVoice" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/_ONYF74hnGk" title="Sri Raghavendra Swamy Shloka" frameborder="0" allowfullscreen></iframe>
         </div><br>
         <div class="responsive-iframe">
-            <iframe src="https://www.youtube.com/embed/cU5XqdOEpHM" title="Chandrachooda Shiva shankara | SriniVoice" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/cU5XqdOEpHM" title="Chandrachooda Shiva shankara" frameborder="0" allowfullscreen></iframe>
         </div><br>
         <div class="responsive-iframe">
-            <iframe src="https://www.youtube.com/embed/dyTh9cNUU9o" title="Vande Tvam Bhudevi | SriniVoice" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/dyTh9cNUU9o" title="Vande Tvam Bhudevi" frameborder="0" allowfullscreen></iframe>
         </div>
     </section>
 </div>
