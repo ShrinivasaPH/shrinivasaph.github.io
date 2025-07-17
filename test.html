@@ -480,6 +480,236 @@
             }
         }
 
+        /* Original Compositions Section */
+        .compositions-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .compositions-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="music-notes" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse"><text x="25" y="25" font-family="Arial" font-size="20" fill="rgba(255,255,255,0.03)" text-anchor="middle">♪</text></pattern></defs><rect width="100" height="100" fill="url(%23music-notes)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .compositions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .audio-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .audio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gold-gradient);
+        }
+
+        .audio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .audio-card h3 {
+            color: var(--text-dark);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            text-align: center;
+            position: relative;
+        }
+
+        .audio-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: var(--gold-gradient);
+            border-radius: 1px;
+        }
+
+        .audio-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 10px;
+        }
+
+        .audio-duration {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .audio-genre {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .custom-audio-player {
+            position: relative;
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            border: 2px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .play-btn {
+            background: var(--primary-gradient);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .play-btn i {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .progress-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-gradient);
+            width: 0%;
+            transition: width 0.1s ease;
+            border-radius: 3px;
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .volume-slider {
+            width: 80px;
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .waveform {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            height: 40px;
+            margin-top: 10px;
+        }
+
+        .wave-bar {
+            width: 3px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+            animation: wave 1.5s ease-in-out infinite;
+            opacity: 0.3;
+        }
+
+        .wave-bar.active {
+            opacity: 1;
+        }
+
+        @keyframes wave {
+            0%, 100% { height: 10px; }
+            50% { height: 25px; }
+        }
+
+        .audio-description {
+            margin-top: 20px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: center;
+            font-style: italic;
+        }
+
         /* Loading animation */
         .loading-overlay {
             position: fixed;
@@ -532,6 +762,7 @@
 
     <nav class="side-nav" id="sideNav">
         <a href="#about">About</a>
+        <a href="#compositions">Original Compositions</a>
         <a href="#instagram">Instagram</a>
         <a href="#youtube">YouTube</a>
         <a href="#contact">Contact</a>
@@ -559,6 +790,205 @@
             </div>
         </div>
     </header>
+
+    <!-- Original Compositions Section -->
+    <section class="compositions-section" id="compositions">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-music"></i> Original Compositions
+            </h2>
+            <div class="compositions-grid">
+                <!-- Sample composition cards - replace with your actual MP3 files -->
+                <div class="audio-card">
+                    <h3>Raag Fusion</h3>
+                    <div class="audio-info">
+                        <span class="audio-duration">3:45</span>
+                        <span class="audio-genre">Classical Fusion</span>
+                    </div>
+                    <div class="custom-audio-player">
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="togglePlay(this)">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-container">
+                                <div class="progress-bar" onclick="setProgress(event, this)">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <div class="time-display">
+                                    <span class="current-time">0:00</span>
+                                    <span class="total-time">3:45</span>
+                                </div>
+                            </div>
+                            <div class="volume-control">
+                                <i class="fas fa-volume-up"></i>
+                                <input type="range" class="volume-slider" min="0" max="100" value="70">
+                            </div>
+                        </div>
+                        <div class="waveform">
+                            <div class="wave-bar" style="animation-delay: 0s; height: 15px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.1s; height: 20px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.2s; height: 12px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.3s; height: 25px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.4s; height: 18px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.5s; height: 22px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.6s; height: 16px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.7s; height: 19px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.8s; height: 14px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.9s; height: 21px;"></div>
+                        </div>
+                        <audio preload="metadata">
+                            <source src="path/to/your/raag-fusion.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="audio-description">
+                        A beautiful blend of traditional Indian classical music with contemporary elements, featuring intricate melodic patterns and rhythmic complexities.
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <h3>Devotional Harmony</h3>
+                    <div class="audio-info">
+                        <span class="audio-duration">4:20</span>
+                        <span class="audio-genre">Devotional</span>
+                    </div>
+                    <div class="custom-audio-player">
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="togglePlay(this)">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-container">
+                                <div class="progress-bar" onclick="setProgress(event, this)">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <div class="time-display">
+                                    <span class="current-time">0:00</span>
+                                    <span class="total-time">4:20</span>
+                                </div>
+                            </div>
+                            <div class="volume-control">
+                                <i class="fas fa-volume-up"></i>
+                                <input type="range" class="volume-slider" min="0" max="100" value="70">
+                            </div>
+                        </div>
+                        <div class="waveform">
+                            <div class="wave-bar" style="animation-delay: 0s; height: 18px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.1s; height: 14px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.2s; height: 22px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.3s; height: 17px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.4s; height: 25px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.5s; height: 13px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.6s; height: 20px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.7s; height: 16px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.8s; height: 23px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.9s; height: 15px;"></div>
+                        </div>
+                        <audio preload="metadata">
+                            <source src="path/to/your/devotional-harmony.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="audio-description">
+                        A soul-stirring devotional composition that captures the essence of spiritual devotion through melodic vocals and harmonious arrangements.
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <h3>Modern Carnatic</h3>
+                    <div class="audio-info">
+                        <span class="audio-duration">5:15</span>
+                        <span class="audio-genre">Contemporary</span>
+                    </div>
+                    <div class="custom-audio-player">
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="togglePlay(this)">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-container">
+                                <div class="progress-bar" onclick="setProgress(event, this)">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <div class="time-display">
+                                    <span class="current-time">0:00</span>
+                                    <span class="total-time">5:15</span>
+                                </div>
+                            </div>
+                            <div class="volume-control">
+                                <i class="fas fa-volume-up"></i>
+                                <input type="range" class="volume-slider" min="0" max="100" value="70">
+                            </div>
+                        </div>
+                        <div class="waveform">
+                            <div class="wave-bar" style="animation-delay: 0s; height: 16px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.1s; height: 23px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.2s; height: 19px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.3s; height: 14px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.4s; height: 21px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.5s; height: 17px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.6s; height: 24px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.7s; height: 12px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.8s; height: 20px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.9s; height: 18px;"></div>
+                        </div>
+                        <audio preload="metadata">
+                            <source src="path/to/your/modern-carnatic.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="audio-description">
+                        An innovative approach to Carnatic music, blending traditional ragas with modern production techniques and contemporary sensibilities.
+                    </div>
+                </div>
+
+                <div class="audio-card">
+                    <h3>Melodic Expressions</h3>
+                    <div class="audio-info">
+                        <span class="audio-duration">3:30</span>
+                        <span class="audio-genre">Instrumental</span>
+                    </div>
+                    <div class="custom-audio-player">
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="togglePlay(this)">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-container">
+                                <div class="progress-bar" onclick="setProgress(event, this)">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <div class="time-display">
+                                    <span class="current-time">0:00</span>
+                                    <span class="total-time">3:30</span>
+                                </div>
+                            </div>
+                            <div class="volume-control">
+                                <i class="fas fa-volume-up"></i>
+                                <input type="range" class="volume-slider" min="0" max="100" value="70">
+                            </div>
+                        </div>
+                        <div class="waveform">
+                            <div class="wave-bar" style="animation-delay: 0s; height: 20px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.1s; height: 15px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.2s; height: 25px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.3s; height: 18px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.4s; height: 13px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.5s; height: 22px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.6s; height: 19px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.7s; height: 16px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.8s; height: 24px;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.9s; height: 17px;"></div>
+                        </div>
+                        <audio preload="metadata">
+                            <source src="path/to/your/melodic-expressions.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="audio-description">
+                        A purely instrumental piece that showcases the beauty of melody through intricate compositions and emotive musical storytelling.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- About Section -->
     <section class="section" id="about">
