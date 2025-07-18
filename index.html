@@ -673,6 +673,7 @@
                                 <div class="track-duration">3:45</div>
                             </div>
                         </div>
+                        <audio class="audio-player" src="audio/Chende-Hanuma.mp3"></audio>
                         <p class="music-description">
                             Traditional Raga Malkauns gets a contemporary twist with modern instruments and production, creating a bridge between ancient wisdom and today's sound.
                         </p>
@@ -893,14 +894,26 @@
 
         // Play button interactions
         document.querySelectorAll('.play-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Toggle play/pause
-                if (this.textContent === '▶') {
-                    this.textContent = '⏸';
-                    this.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
-                } else {
-                    this.textContent = '▶';
-                    this.style.background = 'linear-gradient(45deg, #f093fb, #f5576c)';
-                }
-            });
+    const audio = btn.closest('.music-card-content').querySelector('.audio-player');
+
+    btn.addEventListener('click', function () {
+        // Pause all other audio
+        document.querySelectorAll('.audio-player').forEach(p => {
+            if (p !== audio) {
+                p.pause();
+                p.currentTime = 0;
+                p.closest('.music-card-content').querySelector('.play-btn').textContent = '▶';
+            }
         });
+
+        if (audio.paused) {
+            audio.play();
+            this.textContent = '⏸';
+            this.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
+        } else {
+            audio.pause();
+            this.textContent = '▶';
+            this.style.background = 'linear-gradient(45deg, #f093fb, #f5576c)';
+        }
+    });
+});
