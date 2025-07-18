@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srinivasa PH - Professional Singer & Composer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 48px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .profile-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .profile-title {
+            color: #718096;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .nav-menu li {
+            margin-bottom: 12px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            padding: 12px 20px;
+            border-radius: 12px;
+            display: block;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 20px;
+        }
+
+        .contact-section h3 {
+            color: #2d3748;
+            font-size: 18px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            color: #4a5568;
+            font-size: 14px;
+        }
+
+        .contact-item i {
+            width: 20px;
+            margin-right: 12px;
+            color: #667eea;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 12px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: #718096;
+            margin-bottom: 30px;
+        }
+
+        .hero-description {
+            font-size: 16px;
+            color: #4a5568;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .demo-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.15);
+            border-color: rgba(102, 126, 234, 0.4);
+        }
+
+        .demo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .demo-header h3 {
+            color: #2d3748;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .genre-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .audio-placeholder {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            border: 2px dashed rgba(102, 126, 234, 0.3);
+        }
+
+        .play-button {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .audio-info {
+            flex-grow: 1;
+        }
+
+        .track-name {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+
+        .track-duration {
+            color: #718096;
+            font-size: 14px;
+        }
+
+        .demo-description {
+            color: #4a5568;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .media-item {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .media-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.15);
+        }
+
+        .video-placeholder {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-placeholder iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .instagram-placeholder {
+            height: 200px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .instagram-content {
+            width: 100%;
+            max-width: 280px;
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .instagram-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .instagram-avatar {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: white;
+        }
+
+        .instagram-username {
+            font-weight: 600;
+            color: #262626;
+            font-size: 14px;
+        }
+
+        .instagram-time {
+            color: #8e8e8e;
+            font-size: 12px;
+        }
+
+        .instagram-image {
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .instagram-caption {
+            font-size: 14px;
+            color: #262626;
+            line-height: 1.4;
+        }
+
+        .instagram-caption strong {
+            font-weight: 600;
+        }
+
+        .media-info {
+            padding: 20px;
+        }
+
+        .media-info h4 {
+            color: #2d3748;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .media-info p {
+            color: #718096;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .service-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        .service-description {
+            color: #718096;
+            font-size: 14px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 10px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .sidebar {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                z-index: 999;
+                padding: 80px 30px 30px;
+                border-radius: 0;
+            }
+
+            .sidebar.active {
+                display: block;
+            }
+
+            .main-content {
+                margin-top: 60px;
+                padding: 30px 20px;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hamburger" onclick="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <div class="profile-section">
+                <div class="profile-img">SP</div>
+                <h2 class="profile-name">Srinivasa PH</h2>
+                <p class="profile-title">Singer & Composer</p>
+            </div>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                </ul>
+            </nav>
+
+            <div class="contact-section">
+                <h3>Let's Connect</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i>📧</i>
+                        <span>srinivasa@music.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>📱</i>
+                        <span>+91 98765 43210</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>📍</i>
+                        <span>Bengaluru, India</span>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link" title="YouTube">
+                        <i>🎵</i>
+                    </a>
+                    <a href="#" class="social-link" title="Instagram">
+                        <i>📷</i>
+                    </a>
+                    <a href="#" class="social-link" title="Spotify">
+                        <i>🎧</i>
+                    </a>
+                    <a href="#" class="social-link" title="LinkedIn">
+                        <i>💼</i>
+                    </a>
+                    <a href="#" class="social-link" title="Twitter">
+                        <i>🐦</i>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <section class="hero-section">
+                <h1 class="hero-title">Musical Excellence</h1>
+                <p class="hero-subtitle">Crafting Melodies That Touch Hearts</p>
+                <p class="hero-description">
+                    Hello! I'm Srinivasa, a professional singer and composer based in Bengaluru. Driven by a fervent desire to create melodies that resonate deeply, I've immersed myself in the art of composition for countless years. My musical journey spans classical Indian ragas to contemporary compositions, each piece crafted with passion and precision.
+                </p>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">What I Offer</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🎤</div>
+                        <h3 class="service-title">Live Performances</h3>
+                        <p class="service-description">Professional live singing for concerts, events, weddings, and special occasions with captivating performances.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎼</div>
+                        <h3 class="service-title">Original Compositions</h3>
+                        <p class="service-description">Custom music composition across various genres - from classical Indian ragas to contemporary pop, rock, and fusion.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Original Compositions</h2>
+                <p style="text-align: center; color: #718096; margin-bottom: 30px;">Explore my unreleased original tunes across various genres - perfect demos for potential collaborations and projects.</p>
+                
+                <div class="demo-grid">
+                    <div class="demo-card">
+                        <div class="demo-header">
+                            <h3>Classical Fusion</h3>
+                            <span class="genre-tag">Raga + Contemporary</span>
+                        </div>
+                        <div class="audio-placeholder">
+                            <div class="play-button">▶️</div>
+                            <div class="audio-info">
+                                <div class="track-name">Raga Malkauns Fusion</div>
+                                <div class="track-duration">3:45</div>
+                            </div>
+                        </div>
+                        <p class="demo-description">A modern take on classical Raga Malkauns with contemporary instruments and arrangements.</p>
+                    </div>
+
+                    <div class="demo-card">
+                        <div class="demo-header">
+                            <h3>Pop Ballad</h3>
+                            <span class="genre-tag">Contemporary</span>
+                        </div>
+                        <div class="audio-placeholder">
+                            <div class="play-button">▶️</div>
+                            <div class="audio-info">
+                                <div class="track-name">Echoes of Tomorrow</div>
+                                <div class="track-duration">4:12</div>
+                            </div>
+                        </div>
+                        <p class="demo-description">An emotional pop ballad with heartfelt lyrics and soaring melodies.</p>
+                    </div>
+
+                    <div class="demo-card">
+                        <div class="demo-header">
+                            <h3>Folk Fusion</h3>
+                            <span class="genre-tag">Traditional + Modern</span>
+                        </div>
+                        <div class="audio-placeholder">
+                            <div class="play-button">▶️</div>
+                            <div class="audio-info">
+                                <div class="track-name">Karnataka Sunrise</div>
+                                <div class="track-duration">3:28</div>
+                            </div>
+                        </div>
+                        <p class="demo-description">Traditional Karnataka folk melodies blended with modern production techniques.</p>
+                    </div>
+
+                    <div class="demo-card">
+                        <div class="demo-header">
+                            <h3>Devotional</h3>
+                            <span class="genre-tag">Spiritual</span>
+                        </div>
+                        <div class="audio-placeholder">
+                            <div class="play-button">▶️</div>
+                            <div class="audio-info">
+                                <div class="track-name">Divine Essence</div>
+                                <div class="track-duration">5:15</div>
+                            </div>
+                        </div>
+                        <p class="demo-description">A spiritual composition that connects the soul with divine consciousness.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">My Performances</h2>
+                <p style="text-align: center; color: #718096; margin-bottom: 30px;">Watch my latest performances and vocal showcases</p>
+                
+                <div class="media-grid">
+                    <div class="media-item">
+                        <div class="video-placeholder">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="media-info">
+                            <h4>Classical Performance</h4>
+                            <p>Live rendition of Raga Yaman at Bengaluru Music Festival</p>
+                        </div>
+                    </div>
+
+                    <div class="media-item">
+                        <div class="video-placeholder">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="media-info">
+                            <h4>Contemporary Fusion</h4>
+                            <p>Original composition blending Indian classical with modern elements</p>
+                        </div>
+                    </div>
+
+                    <div class="media-item">
+                        <div class="instagram-placeholder">
+                            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/PLACEHOLDER/" data-instgrm-version="14">
+                                <div class="instagram-content">
+                                    <div class="instagram-header">
+                                        <div class="instagram-avatar">🎵</div>
+                                        <div class="instagram-info">
+                                            <div class="instagram-username">@srinivasa_music</div>
+                                            <div class="instagram-time">2 days ago</div>
+                                        </div>
+                                    </div>
+                                    <div class="instagram-image">📸</div>
+                                    <div class="instagram-caption">
+                                        <p><strong>srinivasa_music</strong> Behind the scenes of my latest composition session. Creating magic one note at a time! 🎼✨</p>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                        <div class="media-info">
+                            <h4>Studio Sessions</h4>
+                            <p>Behind the scenes of my creative process</p>
+                        </div>
+                    </div>
+
+                    <div class="media-item">
+                        <div class="instagram-placeholder">
+                            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/PLACEHOLDER2/" data-instgrm-version="14">
+                                <div class="instagram-content">
+                                    <div class="instagram-header">
+                                        <div class="instagram-avatar">🎵</div>
+                                        <div class="instagram-info">
+                                            <div class="instagram-username">@srinivasa_music</div>
+                                            <div class="instagram-time">1 week ago</div>
+                                        </div>
+                                    </div>
+                                    <div class="instagram-image">🎤</div>
+                                    <div class="instagram-caption">
+                                        <p><strong>srinivasa_music</strong> Snippet from my latest devotional composition. Can you feel the spiritual energy? 🙏 #DevotionalMusic #IndianClassical</p>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                        <div class="media-info">
+                            <h4>Devotional Music</h4>
+                            <p>Spiritual compositions that touch the soul</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (window.innerWidth <= 768 && 
+                !sidebar.contains(event.target) && 
+                !hamburger.contains(event.target) && 
+                sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // Close sidebar on mobile after clicking
+                if (window.innerWidth <= 768) {
+                    document.getElementById('sidebar').classList.remove('active');
+                }
+            });
+        });
+
+        // Active nav link highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
