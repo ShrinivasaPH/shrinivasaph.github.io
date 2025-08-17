@@ -27,7 +27,6 @@
             height: 100%;
             z-index: -1;
             background: linear-gradient(45deg, #1e3c72, #2a5298, #0f2027, #203a43);
-
             background-size: 400% 400%;
             animation: gradientShift 8s ease infinite;
         }
@@ -652,8 +651,8 @@
         <div class="container">
             <h2 class="section-title">Original Compositions</h2>
             <p class="section-subtitle">
-                Unreleased gems across genres - from soul-stirring classical fusions to contemporary masterpieces. 
-                Each track showcases a different facet of my musical journey.
+                Three unique musical journeys showcasing my range as a composer - from cinematic drama to mythological grandeur to divine serenity. 
+                Each track represents a different facet of my creative vision.
             </p>
             
             <div class="music-grid">
@@ -661,21 +660,20 @@
                     <div class="music-card-content">
                         <div class="music-header">
                             <div>
-                                <h3 class="music-title">Raga Reimagined</h3>
-                                <div class="genre-badge">Classical Fusion</div>
+                                <h3 class="music-title">Crime Flashback from Village</h3>
+                                <div class="genre-badge">Cinematic Drama</div>
                             </div>
                         </div>
                         <div class="waveform"></div>
                         <div class="play-controls">
                             <button class="play-btn">▶</button>
                             <div class="track-info">
-                                <div class="track-name">Malkauns meets Modernity</div>
-                                <div class="track-duration">3:45</div>
+                                <div class="track-name">Dark Memories Unfold</div>
+                                <div class="track-duration">4:32</div>
                             </div>
                         </div>
-                        <audio class="audio-player" src="audio/Chende-Hanuma.mp3"></audio>
                         <p class="music-description">
-                            Traditional Raga Malkauns gets a contemporary twist with modern instruments and production, creating a bridge between ancient wisdom and today's sound.
+                            A haunting composition that weaves tension and mystery, capturing the essence of untold village secrets coming to light. The track builds suspense through traditional instruments merged with modern thriller elements.
                         </p>
                     </div>
                 </div>
@@ -684,20 +682,20 @@
                     <div class="music-card-content">
                         <div class="music-header">
                             <div>
-                                <h3 class="music-title">Midnight Echoes</h3>
-                                <div class="genre-badge">Pop Ballad</div>
+                                <h3 class="music-title">Mythological Fight BGM</h3>
+                                <div class="genre-badge">Epic Orchestral</div>
                             </div>
                         </div>
                         <div class="waveform"></div>
                         <div class="play-controls">
                             <button class="play-btn">▶</button>
                             <div class="track-info">
-                                <div class="track-name">Echoes of Tomorrow</div>
-                                <div class="track-duration">4:12</div>
+                                <div class="track-name">Battle of the Gods</div>
+                                <div class="track-duration">5:48</div>
                             </div>
                         </div>
                         <p class="music-description">
-                            An emotional journey through love, loss, and hope. This contemporary ballad showcases powerful vocals against a backdrop of stirring melodies.
+                            An epic orchestral piece that brings ancient mythological battles to life. Traditional Indian percussion meets dramatic orchestration, creating an immersive soundtrack for divine confrontations and heroic tales.
                         </p>
                     </div>
                 </div>
@@ -706,42 +704,20 @@
                     <div class="music-card-content">
                         <div class="music-header">
                             <div>
-                                <h3 class="music-title">Village Stories</h3>
-                                <div class="genre-badge">Folk Fusion</div>
+                                <h3 class="music-title">Waterfall in Amaravati - The Hindu Heaven</h3>
+                                <div class="genre-badge">Spiritual Ambient</div>
                             </div>
                         </div>
                         <div class="waveform"></div>
                         <div class="play-controls">
                             <button class="play-btn">▶</button>
                             <div class="track-info">
-                                <div class="track-name">Karnataka Sunrise</div>
-                                <div class="track-duration">3:28</div>
+                                <div class="track-name">Divine Cascades</div>
+                                <div class="track-duration">6:15</div>
                             </div>
                         </div>
                         <p class="music-description">
-                            Celebrating the rich folk traditions of Karnataka with modern arrangements that honor the past while embracing the future.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="music-card">
-                    <div class="music-card-content">
-                        <div class="music-header">
-                            <div>
-                                <h3 class="music-title">Sacred Sounds</h3>
-                                <div class="genre-badge">Devotional</div>
-                            </div>
-                        </div>
-                        <div class="waveform"></div>
-                        <div class="play-controls">
-                            <button class="play-btn">▶</button>
-                            <div class="track-info">
-                                <div class="track-name">Divine Essence</div>
-                                <div class="track-duration">5:15</div>
-                            </div>
-                        </div>
-                        <p class="music-description">
-                            A spiritual composition that connects the listener with divine consciousness through meditative melodies and transcendent vocals.
+                            A serene and transcendent composition that transports listeners to the mystical realm of Amaravati. Ethereal sounds of cascading water blend with heavenly melodies, creating a meditative journey through divine landscapes.
                         </p>
                     </div>
                 </div>
@@ -835,10 +811,6 @@
                     <span>shrinivasaph@gmail.com</span>
                 </div>
                 <div class="contact-item">
-                    <div class="contact-icon">📱</div>
-                    <span>+91 97400 85757</span>
-                </div>
-                <div class="contact-item">
                     <div class="contact-icon">📍</div>
                     <span>Bengaluru, India</span>
                 </div>
@@ -892,28 +864,35 @@
             });
         });
 
-        // Play button interactions
+        // Play button interactions (placeholder functionality)
         document.querySelectorAll('.play-btn').forEach(btn => {
-    const audio = btn.closest('.music-card-content').querySelector('.audio-player');
+            btn.addEventListener('click', function () {
+                // Reset all other play buttons
+                document.querySelectorAll('.play-btn').forEach(otherBtn => {
+                    if (otherBtn !== this) {
+                        otherBtn.textContent = '▶';
+                        otherBtn.style.background = 'linear-gradient(45deg, #f093fb, #f5576c)';
+                    }
+                });
 
-    btn.addEventListener('click', function () {
-        // Pause all other audio
-        document.querySelectorAll('.audio-player').forEach(p => {
-            if (p !== audio) {
-                p.pause();
-                p.currentTime = 0;
-                p.closest('.music-card-content').querySelector('.play-btn').textContent = '▶';
-            }
+                // Toggle current button
+                if (this.textContent === '▶') {
+                    this.textContent = '⏸';
+                    this.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
+                } else {
+                    this.textContent = '▶';
+                    this.style.background = 'linear-gradient(45deg, #f093fb, #f5576c)';
+                }
+            });
         });
 
-        if (audio.paused) {
-            audio.play();
-            this.textContent = '⏸';
-            this.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
-        } else {
-            audio.pause();
-            this.textContent = '▶';
-            this.style.background = 'linear-gradient(45deg, #f093fb, #f5576c)';
-        }
-    });
-});
+        // Waveform click interaction
+        document.querySelectorAll('.waveform').forEach(waveform => {
+            waveform.addEventListener('click', function() {
+                const playBtn = this.closest('.music-card-content').querySelector('.play-btn');
+                playBtn.click();
+            });
+        });
+    </script>
+</body>
+</html>
