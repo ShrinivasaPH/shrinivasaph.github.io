@@ -370,16 +370,23 @@
             align-items: center;
             gap: 15px;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
 
-        .play-btn {
-            width: 50px;
-            height: 50px;
+        .main-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .play-btn, .control-btn {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: linear-gradient(45deg, #f093fb, #f5576c);
             border: none;
             color: #fff;
-            font-size: 18px;
+            font-size: 16px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
@@ -387,9 +394,115 @@
             justify-content: center;
         }
 
-        .play-btn:hover {
+        .play-btn {
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+        }
+
+        .play-btn:hover, .control-btn:hover {
             transform: scale(1.1);
             box-shadow: 0 10px 20px rgba(245, 87, 108, 0.4);
+        }
+
+        .progress-container {
+            flex-grow: 1;
+            margin: 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 200px;
+        }
+
+        .time-display {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            min-width: 35px;
+        }
+
+        .progress-bar {
+            flex-grow: 1;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .progress-bar:hover .progress-fill {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .volume-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .volume-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .volume-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .volume-slider {
+            width: 80px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            outline: none;
+            cursor: pointer;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+            cursor: pointer;
+        }
+
+        .volume-slider::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+            cursor: pointer;
+            border: none;
+        }
+
+        .player-expanded {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .track-info {
@@ -672,6 +785,11 @@
                                 <div class="track-duration">4:32</div>
                             </div>
                         </div>
+                        <audio class="audio-player" preload="metadata">
+                            <source src="audio/crime-flashback-village.mp3" type="audio/mpeg">
+                            <source src="audio/crime-flashback-village.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
                         <p class="music-description">
                             A haunting composition that weaves tension and mystery, capturing the essence of untold village secrets coming to light. The track builds suspense through traditional instruments merged with modern thriller elements.
                         </p>
@@ -694,6 +812,11 @@
                                 <div class="track-duration">5:48</div>
                             </div>
                         </div>
+                        <audio class="audio-player" preload="metadata">
+                            <source src="audio/mythological-fight-bgm.mp3" type="audio/mpeg">
+                            <source src="audio/mythological-fight-bgm.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
                         <p class="music-description">
                             An epic orchestral piece that brings ancient mythological battles to life. Traditional Indian percussion meets dramatic orchestration, creating an immersive soundtrack for divine confrontations and heroic tales.
                         </p>
@@ -716,6 +839,11 @@
                                 <div class="track-duration">6:15</div>
                             </div>
                         </div>
+                        <audio class="audio-player" preload="metadata">
+                            <source src="audio/waterfall-amaravati-heaven.mp3" type="audio/mpeg">
+                            <source src="audio/waterfall-amaravati-heaven.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
                         <p class="music-description">
                             A serene and transcendent composition that transports listeners to the mystical realm of Amaravati. Ethereal sounds of cascading water blend with heavenly melodies, creating a meditative journey through divine landscapes.
                         </p>
@@ -811,6 +939,10 @@
                     <span>shrinivasaph@gmail.com</span>
                 </div>
                 <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <span>+91 97400 85757</span>
+                </div>
+                <div class="contact-item">
                     <div class="contact-icon">📍</div>
                     <span>Bengaluru, India</span>
                 </div>
@@ -864,25 +996,59 @@
             });
         });
 
-        // Play button interactions (placeholder functionality)
+        // Audio player functionality
         document.querySelectorAll('.play-btn').forEach(btn => {
+            const audio = btn.closest('.music-card-content').querySelector('.audio-player');
+
             btn.addEventListener('click', function () {
-                // Reset all other play buttons
-                document.querySelectorAll('.play-btn').forEach(otherBtn => {
-                    if (otherBtn !== this) {
+                // Pause all other audio players
+                document.querySelectorAll('.audio-player').forEach(player => {
+                    if (player !== audio) {
+                        player.pause();
+                        player.currentTime = 0;
+                        const otherBtn = player.closest('.music-card-content').querySelector('.play-btn');
                         otherBtn.textContent = '▶';
                         otherBtn.style.background = 'linear-gradient(45deg, #f093fb, #f5576c)';
                     }
                 });
 
-                // Toggle current button
-                if (this.textContent === '▶') {
-                    this.textContent = '⏸';
-                    this.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
+                // Toggle current audio
+                if (audio.paused) {
+                    audio.play().then(() => {
+                        this.textContent = '⏸';
+                        this.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
+                    }).catch(error => {
+                        console.log('Audio playback failed:', error);
+                        // If audio fails to load, show a message
+                        alert('Audio file not found. Please make sure the audio files are uploaded to the audio/ folder.');
+                    });
                 } else {
+                    audio.pause();
                     this.textContent = '▶';
                     this.style.background = 'linear-gradient(45deg, #f093fb, #f5576c)';
                 }
+            });
+
+            // Handle audio end event
+            audio.addEventListener('ended', function() {
+                btn.textContent = '▶';
+                btn.style.background = 'linear-gradient(45deg, #f093fb, #f5576c)';
+            });
+
+            // Update duration display when metadata loads
+            audio.addEventListener('loadedmetadata', function() {
+                const duration = this.duration;
+                const minutes = Math.floor(duration / 60);
+                const seconds = Math.floor(duration % 60);
+                const durationDisplay = btn.closest('.music-card-content').querySelector('.track-duration');
+                durationDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            });
+
+            // Handle loading errors
+            audio.addEventListener('error', function() {
+                console.log('Error loading audio file');
+                btn.style.opacity = '0.5';
+                btn.style.cursor = 'not-allowed';
             });
         });
 
