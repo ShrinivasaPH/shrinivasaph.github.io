@@ -778,11 +778,26 @@
                             </div>
                         </div>
                         <div class="waveform"></div>
+                        <div class="track-info">
+                            <div class="track-name">Dark Memories Unfold</div>
+                            <div class="track-duration">Cinematic Drama</div>
+                        </div>
                         <div class="play-controls">
-                            <button class="play-btn">▶</button>
-                            <div class="track-info">
-                                <div class="track-name">Dark Memories Unfold</div>
-                                <div class="track-duration">4:32</div>
+                            <div class="main-controls">
+                                <button class="control-btn" data-action="rewind">⏪</button>
+                                <button class="play-btn">▶</button>
+                                <button class="control-btn" data-action="forward">⏩</button>
+                            </div>
+                            <div class="progress-container">
+                                <span class="time-display current-time">0:00</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <span class="time-display total-time">4:32</span>
+                            </div>
+                            <div class="volume-container">
+                                <button class="volume-btn">🔊</button>
+                                <input type="range" class="volume-slider" min="0" max="100" value="80">
                             </div>
                         </div>
                         <audio class="audio-player" preload="metadata">
@@ -806,11 +821,26 @@
                         </div>
                         <div class="waveform"></div>
                         <div class="play-controls">
-                            <button class="play-btn">▶</button>
-                            <div class="track-info">
-                                <div class="track-name">Battle of the Gods</div>
-                                <div class="track-duration">5:48</div>
+                            <div class="main-controls">
+                                <button class="control-btn" data-action="rewind">⏪</button>
+                                <button class="play-btn">▶</button>
+                                <button class="control-btn" data-action="forward">⏩</button>
                             </div>
+                            <div class="progress-container">
+                                <span class="time-display current-time">0:00</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <span class="time-display total-time">5:48</span>
+                            </div>
+                            <div class="volume-container">
+                                <button class="volume-btn">🔊</button>
+                                <input type="range" class="volume-slider" min="0" max="100" value="80">
+                            </div>
+                        </div>
+                        <div class="track-info">
+                            <div class="track-name">Battle of the Gods</div>
+                            <div class="track-duration">Epic Orchestral</div>
                         </div>
                         <audio class="audio-player" preload="metadata">
                             <source src="audio/mythological-fight-bgm.mp3" type="audio/mpeg">
@@ -833,11 +863,26 @@
                         </div>
                         <div class="waveform"></div>
                         <div class="play-controls">
-                            <button class="play-btn">▶</button>
-                            <div class="track-info">
-                                <div class="track-name">Divine Cascades</div>
-                                <div class="track-duration">6:15</div>
+                            <div class="main-controls">
+                                <button class="control-btn" data-action="rewind">⏪</button>
+                                <button class="play-btn">▶</button>
+                                <button class="control-btn" data-action="forward">⏩</button>
                             </div>
+                            <div class="progress-container">
+                                <span class="time-display current-time">0:00</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <span class="time-display total-time">6:15</span>
+                            </div>
+                            <div class="volume-container">
+                                <button class="volume-btn">🔊</button>
+                                <input type="range" class="volume-slider" min="0" max="100" value="80">
+                            </div>
+                        </div>
+                        <div class="track-info">
+                            <div class="track-name">Divine Cascades</div>
+                            <div class="track-duration">Spiritual Ambient</div>
                         </div>
                         <audio class="audio-player" preload="metadata">
                             <source src="audio/waterfall-amaravati-heaven.mp3" type="audio/mpeg">
@@ -996,19 +1041,30 @@
             });
         });
 
-        // Audio player functionality
-        document.querySelectorAll('.play-btn').forEach(btn => {
-            const audio = btn.closest('.music-card-content').querySelector('.audio-player');
+        // Enhanced audio player functionality
+        document.querySelectorAll('.music-card-content').forEach(cardContent => {
+            const audio = cardContent.querySelector('.audio-player');
+            const playBtn = cardContent.querySelector('.play-btn');
+            const progressBar = cardContent.querySelector('.progress-bar');
+            const progressFill = cardContent.querySelector('.progress-fill');
+            const currentTime = cardContent.querySelector('.current-time');
+            const totalTime = cardContent.querySelector('.total-time');
+            const volumeBtn = cardContent.querySelector('.volume-btn');
+            const volumeSlider = cardContent.querySelector('.volume-slider');
+            const controlBtns = cardContent.querySelectorAll('.control-btn');
 
-            btn.addEventListener('click', function () {
+            // Set initial volume
+            audio.volume = volumeSlider.value / 100;
+
+            // Play/Pause functionality
+            playBtn.addEventListener('click', function() {
                 // Pause all other audio players
                 document.querySelectorAll('.audio-player').forEach(player => {
                     if (player !== audio) {
                         player.pause();
-                        player.currentTime = 0;
-                        const otherBtn = player.closest('.music-card-content').querySelector('.play-btn');
-                        otherBtn.textContent = '▶';
-                        otherBtn.style.background = 'linear-gradient(45deg, #f093fb, #f5576c)';
+                        const otherPlayBtn = player.closest('.music-card-content').querySelector('.play-btn');
+                        otherPlayBtn.textContent = '▶';
+                        otherPlayBtn.style.background = 'linear-gradient(45deg, #f093fb, #f5576c)';
                     }
                 });
 
@@ -1019,7 +1075,6 @@
                         this.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
                     }).catch(error => {
                         console.log('Audio playback failed:', error);
-                        // If audio fails to load, show a message
                         alert('Audio file not found. Please make sure the audio files are uploaded to the audio/ folder.');
                     });
                 } else {
@@ -1029,27 +1084,94 @@
                 }
             });
 
-            // Handle audio end event
-            audio.addEventListener('ended', function() {
-                btn.textContent = '▶';
-                btn.style.background = 'linear-gradient(45deg, #f093fb, #f5576c)';
+            // Control buttons (rewind/forward)
+            controlBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const action = this.dataset.action;
+                    if (action === 'rewind') {
+                        audio.currentTime = Math.max(0, audio.currentTime - 10);
+                    } else if (action === 'forward') {
+                        audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+                    }
+                });
             });
 
-            // Update duration display when metadata loads
+            // Progress bar click to seek
+            progressBar.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const percentage = clickX / width;
+                audio.currentTime = percentage * audio.duration;
+            });
+
+            // Volume control
+            volumeSlider.addEventListener('input', function() {
+                audio.volume = this.value / 100;
+                updateVolumeIcon();
+            });
+
+            volumeBtn.addEventListener('click', function() {
+                if (audio.volume > 0) {
+                    audio.dataset.previousVolume = audio.volume;
+                    audio.volume = 0;
+                    volumeSlider.value = 0;
+                } else {
+                    const previousVolume = audio.dataset.previousVolume || 0.8;
+                    audio.volume = previousVolume;
+                    volumeSlider.value = previousVolume * 100;
+                }
+                updateVolumeIcon();
+            });
+
+            function updateVolumeIcon() {
+                if (audio.volume === 0) {
+                    volumeBtn.textContent = '🔇';
+                } else if (audio.volume < 0.5) {
+                    volumeBtn.textContent = '🔉';
+                } else {
+                    volumeBtn.textContent = '🔊';
+                }
+            }
+
+            // Format time display
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs.toString().padStart(2, '0')}`;
+            }
+
+            // Update progress and time
+            audio.addEventListener('timeupdate', function() {
+                if (this.duration) {
+                    const progress = (this.currentTime / this.duration) * 100;
+                    progressFill.style.width = progress + '%';
+                    currentTime.textContent = formatTime(this.currentTime);
+                }
+            });
+
+            // Update total time when metadata loads
             audio.addEventListener('loadedmetadata', function() {
-                const duration = this.duration;
-                const minutes = Math.floor(duration / 60);
-                const seconds = Math.floor(duration % 60);
-                const durationDisplay = btn.closest('.music-card-content').querySelector('.track-duration');
-                durationDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                totalTime.textContent = formatTime(this.duration);
+            });
+
+            // Handle audio end event
+            audio.addEventListener('ended', function() {
+                playBtn.textContent = '▶';
+                playBtn.style.background = 'linear-gradient(45deg, #f093fb, #f5576c)';
+                progressFill.style.width = '0%';
+                currentTime.textContent = '0:00';
             });
 
             // Handle loading errors
             audio.addEventListener('error', function() {
                 console.log('Error loading audio file');
-                btn.style.opacity = '0.5';
-                btn.style.cursor = 'not-allowed';
+                playBtn.style.opacity = '0.5';
+                playBtn.style.cursor = 'not-allowed';
             });
+
+            // Initialize volume icon
+            updateVolumeIcon();
         });
 
         // Waveform click interaction
