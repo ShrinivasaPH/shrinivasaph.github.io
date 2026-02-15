@@ -1722,6 +1722,183 @@
     background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
     border-top: 1px solid #e2e8f0;
   }
+
+    /* Teaching Hub Section */
+    .teaching-section {
+      padding: 6rem 0;
+      background: var(--bg-primary);
+      position: relative;
+    }
+
+    .teaching-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 1px 1px, var(--text-muted) 1px, transparent 0);
+      background-size: 30px 30px;
+      opacity: 0.03;
+      pointer-events: none;
+    }
+
+    /* Inner Tabs Navigation */
+    .inner-tabs-nav {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 0;
+    }
+
+    .inner-tab-btn {
+      padding: 1rem 1.5rem;
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+    }
+
+    .inner-tab-btn:hover {
+      color: var(--accent-primary);
+    }
+
+    .inner-tab-btn.active {
+      color: var(--accent-primary);
+      border-bottom-color: var(--accent-primary);
+    }
+
+    /* Tab Content */
+    .inner-tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease-in;
+    }
+
+    .inner-tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Concept Card Styling */
+    .concept-container {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .concept-header {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .concept-icon {
+      font-size: 2rem;
+    }
+
+    .concept-description {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .coming-soon-placeholder {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(168, 85, 247, 0.1));
+      border: 2px dashed var(--accent-primary);
+      border-radius: 12px;
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+    }
+
+    .coming-soon-placeholder:hover {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(168, 85, 247, 0.15));
+      border-color: var(--accent-secondary);
+      color: var(--accent-primary);
+    }
+
+    .coming-soon-placeholder h4 {
+      color: var(--accent-primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .coming-soon-placeholder p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* Hypothesis Testing iframe/embed styling */
+    .hypothesis-embed {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      margin: 2rem 0;
+    }
+
+    .hypothesis-content-frame {
+      width: 100%;
+      min-height: 800px;
+      border: none;
+      display: block;
+    }
+
+    .hypothesis-intro {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 2rem;
+      border-left: 4px solid var(--accent-primary);
+      margin-bottom: 2rem;
+    }
+
+    .hypothesis-intro h3 {
+      color: var(--accent-primary);
+      margin-bottom: 1rem;
+    }
+
+    // Inner Tabs Functionality for Teaching Hub
+    const innerTabBtns = document.querySelectorAll('.inner-tab-btn');
+    const tabContents = document.querySelectorAll('.inner-tab-content');
+
+    innerTabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Get the tab name from data attribute
+        const tabName = btn.getAttribute('data-tab');
+        
+        // Remove active class from all buttons and contents
+        innerTabBtns.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        
+        // Add active class to clicked button and corresponding content
+        btn.classList.add('active');
+        const activeContent = document.getElementById(tabName);
+        if (activeContent) {
+          activeContent.classList.add('active');
+        }
+      });
+    });
+
+
   </style>
 </head>
 
@@ -1747,6 +1924,7 @@
           <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
           <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
           <li class="nav-item"><a href="#articles" class="nav-link">Articles</a></li>
+          <li class="nav-item"><a href="#teaching" class="nav-link">Teaching Hub</a></li>
           <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </div>
@@ -2036,6 +2214,74 @@
     </div>
   </section>
 
+  
+  <section id="teaching" class="teaching-section">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Teaching Hub</h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+        Master fundamental and advanced concepts in Data Science & Statistics. Comprehensive guides crafted to build strong foundations.
+      </p>
+      
+      <!-- Inner Tabs Navigation -->
+      <div class="inner-tabs-nav" data-aos="fade-up" data-aos-delay="200">
+        <button class="inner-tab-btn active" data-tab="hypothesis-testing">
+          <span>📊 Hypothesis Testing</span>
+        </button>
+        <button class="inner-tab-btn" data-tab="coming-soon-1">
+          <span>🎯 Coming Soon...</span>
+        </button>
+      </div>
+
+      <!-- Hypothesis Testing Tab -->
+      <div id="hypothesis-testing" class="inner-tab-content active" data-aos="fade-up" data-aos-delay="300">
+        <div class="concept-container">
+          <div class="concept-header">
+            <span class="concept-icon">📊</span>
+            <span>Hypothesis Testing Ultimate Guide</span>
+          </div>
+          <p class="concept-description">
+            Dive deep into the world of statistical hypothesis testing. Learn everything from fundamental concepts 
+            to advanced techniques used by data scientists and statisticians worldwide. This comprehensive guide 
+            includes practical examples, interactive visualizations, and step-by-step walkthroughs.
+          </p>
+          
+          <div class="hypothesis-intro">
+            <h3>📚 What You'll Learn</h3>
+            <ul style="color: var(--text-secondary); margin-left: 1.5rem;">
+              <li style="margin-bottom: 0.5rem;">Fundamentals of hypothesis testing and statistical inference</li>
+              <li style="margin-bottom: 0.5rem;">Parametric and non-parametric test selection and application</li>
+              <li style="margin-bottom: 0.5rem;">P-values, significance levels, and confidence intervals</li>
+              <li style="margin-bottom: 0.5rem;">Type I and Type II errors, power analysis</li>
+              <li style="margin-bottom: 0.5rem;">Real-world case studies and practical implementations</li>
+              <li>Interactive visualizations and decision trees</li>
+            </ul>
+          </div>
+
+          <div class="hypothesis-embed">
+            <iframe class="hypothesis-content-frame" src="hypothesis_testing_ultimate__4_.html" title="Interactive Hypothesis Testing Guide"></iframe>
+          </div>
+          
+          <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-secondary);">
+            <p><strong>💡 Pro Tip:</strong> Take your time to explore each concept. Use the search functionality within the guide to find specific tests and applications relevant to your work.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coming Soon Tabs -->
+      <div id="coming-soon-1" class="inner-tab-content" data-aos="fade-up" data-aos-delay="300">
+        <div class="coming-soon-placeholder">
+          <h4>📌 More Concepts Coming Soon</h4>
+          <p>I'm preparing comprehensive guides on additional topics including:</p>
+          <p style="margin-top: 1.5rem; font-style: italic;">
+            • Regression Analysis • Bayesian Statistics • Time Series Analysis • Causal Inference • And more!
+          </p>
+          <p style="margin-top: 1.5rem; font-size: 0.9rem;">Check back soon for detailed guides on these fascinating topics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <section id="contact" class="contact-section">
     <div class="container">
       <h2 class="section-title" data-aos="fade-up">Let's Connect</h2>
@@ -2050,7 +2296,7 @@
           </div>
           <h3 class="contact-title">Email</h3>
           <p class="contact-info">
-            <span id="emailText">shrinivasaph@gmail.com</span>
+            <span id="emailText"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="13607b617a7d7a65726072637b53747e727a7f3d707c7e">[email&#160;protected]</a></span>
             <button class="copy-btn" onclick="copyEmail()" aria-label="Copy email address to clipboard">
               <i class="bi bi-copy"></i>
             </button>
@@ -2086,7 +2332,7 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     // Initialize AOS
@@ -2535,14 +2781,3 @@ function showNotifyToast() {
       <span>You'll be notified when this project is ready!</span>
     </div>
   `;
-  document.body.appendChild(toast);
-  
-  setTimeout(() => toast.classList.add('show'), 100);
-  setTimeout(() => {
-    toast.classList.remove('show');
-    setTimeout(() => toast.remove(), 300);
-  }, 4000);
-}
-  </script>
-</body>
-</html>
